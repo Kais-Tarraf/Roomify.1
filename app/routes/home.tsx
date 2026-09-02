@@ -25,7 +25,7 @@ export default function Home() {
 			name,
 			sourceImage: base64Image,
 			renderedImage: undefined,
-			timeStamp: Date.now(),
+			timestamp: Date.now(),
 		};
 		const saved = await createProject({ item: newItem, visibility: "private" });
 		if (!saved) {
@@ -94,7 +94,7 @@ export default function Home() {
 					</div>
 					<div className="projects-grid">
 						{projects.map(
-							({ id, name, renderedImage, sourceImage, timeStamp }) => (
+							({ id, name, renderedImage, sourceImage, timestamp }) => (
 								<div className="project-card group" key={id}>
 									<div className="preview">
 										<img src={renderedImage || sourceImage} alt="project" />
@@ -107,7 +107,7 @@ export default function Home() {
 											<h3>{name}</h3>
 											<div className="meta">
 												<Clock size={12} />
-												<span>{new Date(timeStamp).toLocaleDateString()}</span>
+												<span>{new Date(timestamp as number).toLocaleDateString()}</span>
 												<span>By KHT</span>
 											</div>
 										</div>
